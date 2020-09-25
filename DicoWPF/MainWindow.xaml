@@ -5,8 +5,78 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DicoWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions >
+
+
+        <ListBox Name="lstSecteurs" Grid.Column="0" SelectionChanged="lstSecteurs_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <!--pas de classe on met pas de propriéte-->
+                        <TextBlock  Text="{Binding }"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox x:Name="lstCommerciaux" Grid.Column="2" SelectionChanged="lstCommerciaux_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <!--on veut mettre la proprieté de la classe Commercial-->
+                        <TextBlock Text="{Binding NomCommercial}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox x:Name="lstVentes" Grid.Column="4">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Width="100" Text="{Binding NomClient}"></TextBlock>
+                        <TextBlock  Width="20" Text="{Binding Montant}"></TextBlock>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+        <Button Grid.Column="2" Grid.Row="1" Width="52" Height="20" Content="Insérer" Name="btnInserer" Click="btnInserer_Click"></Button>
+
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Margin="10,10,10,10">
+            <WrapPanel>
+                <TextBlock Text="Secteur"></TextBlock>
+                <TextBox Width="100" Name="txtNomSecteur"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Commercial"></TextBlock>
+                <TextBox Width="100" Name="txtNomCommercial"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Client"></TextBlock>
+                <TextBox Width="100" Name="txtNomClient"></TextBox>
+            </WrapPanel>
+            <WrapPanel>
+                <TextBlock Text="Montant"></TextBlock>
+                <TextBox Width="100" Name="txtMontant"></TextBox>
+            </WrapPanel>
+        </StackPanel>
     </Grid>
 </Window>
